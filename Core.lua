@@ -786,6 +786,17 @@ function DynamicCam:GetDefaultSituations()
     newSituation.cameraCVars["test_cameraDynamicPitch"] = 0;
     situations["102"] = newSituation;
 
+    newSituation = self:CreateSituation("Travel Form");
+    newSituation.priority = 100;
+    newSituation.condition = "return (GetShapeshiftFormID() == 27 or GetShapeshiftFormID() == 3 or GetShapeshiftFormID() == 29 or GetShapeshiftFormID() == 4) and not UnitAffectingCombat(\"player\")";
+    newSituation.events = {"UPDATE_SHAPESHIFT_FORMS", "ZONE_CHANGED_NEW_AREA"};
+    newSituation.cameraActions.zoomSetting = "out";
+    newSituation.cameraActions.zoomValue = 30;
+    newSituation.cameraCVars["test_cameraDynamicPitch"] = 0;
+    newSituation.cameraCVars["test_cameraOverShoulder"] = 0;
+    newSituation.cameraCVars["test_cameraHeadMovementStrength"] = 0;
+    situations["103"] = newSituation;
+
     newSituation = self:CreateSituation("Hearth/Teleport");
     newSituation.priority = 20;
     newSituation.executeOnInit = "this.spells = {136508, 189838, 54406, 94719, 556, 168487, 168499, 171253, 50977, 8690, 222695, 171253, 224869, 53140, 3565, 32271, 193759, 3562, 3567, 33690, 35715, 32272, 49358, 176248, 3561, 49359, 3566, 88342, 88344, 3563, 132627, 132621, 176242, 192085, 192084, 216016};";
